@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHAETON FIRE — The Loopborn Saga</title>
+<meta name="description" content="Phaeton Fire — a ska-punk-reggae-prog space opera family band. The official soundtrack to The Loopborn Saga by Mike Van Doorn / Outer Spaces Studios.">
+
+<!-- ════════════════════════════════════════════════════════════
+     PHAETON FIRE — Official Site  v2
+     phaetonfire.com
+     File structure to ship:
+       /index.html
+       /logo/phaeton_fire_logo.png   (the blue-flame Gothic logo)
+       /covers/cover-01.png ... cover-13.png  (album art)
+     ════════════════════════════════════════════════════════════ -->
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+
+  :root{
+    --void:#06030f;
+    --void-2:#0d0822;
+    --void-3:#1a0f3d;
+    --electric:#00d9ff;
+    --plasma:#b347ff;
+    --hot-pink:#ff2d92;
+    --gold:#ffb800;
+    --ember:#ff5722;
+    --bone:#f4ecd8;
+    --ash:#9a92b3;
+    --glow-cyan:0 0 24px rgba(0,217,255,.45);
+    --glow-purple:0 0 30px rgba(179,71,255,.5);
+  }
+
+  body{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    background:var(--void);
+    color:var(--bone);
+    overflow-x:hidden;
+    line-height:1.55;
+    min-height:100vh;
+  }
+
+  /* ─── COSMIC BACKGROUND ─── */
+  .cosmos{
+    position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(179,71,255,.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(0,217,255,.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 90%, rgba(255,45,146,.15) 0%, transparent 60%),
+      linear-gradient(180deg, var(--void) 0%, var(--void-2) 50%, var(--void) 100%);
+  }
+  .stars{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+      radial-gradient(1px 1px at 60% 70%, #fff, transparent),
+      radial-gradient(1px 1px at 80% 10%, #fff, transparent),
+      radial-gradient(2px 2px at 30% 80%, rgba(255,255,255,.7), transparent),
+      radial-gradient(1px 1px at 90% 50%, #fff, transparent),
+      radial-gradient(1px 1px at 10% 60%, rgba(255,255,255,.6), transparent),
+      radial-gradient(2px 2px at 70% 40%, rgba(255,255,255,.8), transparent),
+      radial-gradient(1px 1px at 45% 15%, #fff, transparent),
+      radial-gradient(1px 1px at 15% 85%, #fff, transparent),
+      radial-gradient(2px 2px at 95% 75%, rgba(255,255,255,.6), transparent);
+    background-size:600px 600px;
+    animation:drift 90s linear infinite;
+    opacity:.55;
+  }
+  @keyframes drift{from{background-position:0 0}to{background-position:600px 600px}}
+
+  .spiral-bg{
+    position:fixed;top:-20%;left:-10%;
+    width:60vw;height:60vw;
+    max-width:900px;max-height:900px;
+    z-index:-1;opacity:.07;pointer-events:none;
+    animation:spin 240s linear infinite;
+  }
+  .spiral-bg-2{
+    position:fixed;bottom:-20%;right:-15%;
+    width:50vw;height:50vw;
+    max-width:700px;max-height:700px;
+    z-index:-1;opacity:.05;pointer-events:none;
+    animation:spin 320s linear infinite reverse;
+  }
+  @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+  /* ─── NAV ─── */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:12px 24px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:linear-gradient(180deg,rgba(6,3,15,.85) 0%,rgba(6,3,15,0) 100%);
+    backdrop-filter:blur(8px);
+  }
+  nav.top .nav-logo{
+    height:42px;width:auto;
+    filter:drop-shadow(0 0 8px rgba(0,217,255,.4));
+    transition:filter .3s;
+  }
+  nav.top .nav-logo:hover{filter:drop-shadow(0 0 16px rgba(179,71,255,.6))}
+  nav.top ul{display:flex;gap:22px;list-style:none}
+  nav.top a{
+    color:var(--bone);text-decoration:none;font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    transition:color .2s,text-shadow .2s;
+    font-family:Impact,"Arial Black",sans-serif;
+  }
+  nav.top a:hover{color:var(--electric);text-shadow:var(--glow-cyan)}
+  nav.top ul li:last-child a{color:var(--gold)}
+  nav.top ul li:last-child a:hover{color:var(--hot-pink)}
+  @media(max-width:700px){
+    nav.top ul{display:none}
+    nav.top .nav-logo{height:36px}
+  }
+
+  /* ─── HERO ─── */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    padding:120px 20px 60px;
+    text-align:center;
+    position:relative;
+  }
+  .hero .album-badge{
+    display:inline-block;
+    padding:6px 18px;
+    border:1px solid var(--electric);
+    border-radius:999px;
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--electric);
+    margin-bottom:30px;
+    animation:pulse 3s ease-in-out infinite;
+    font-family:Impact,sans-serif;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,217,255,.4)}50%{box-shadow:0 0 0 16px rgba(0,217,255,0)}}
+
+  .hero-logo{
+    width:100%;
+    max-width:780px;
+    height:auto;
+    margin-bottom:14px;
+    filter:drop-shadow(0 0 40px rgba(179,71,255,.45));
+    animation:logoBreathe 6s ease-in-out infinite;
+  }
+  @keyframes logoBreathe{
+    0%,100%{filter:drop-shadow(0 0 40px rgba(179,71,255,.45))}
+    50%{filter:drop-shadow(0 0 60px rgba(0,217,255,.55))}
+  }
+
+  /* Hero album cover (the master album art — now the hero element) */
+  .hero-cover{
+    width:380px;height:380px;
+    max-width:90vw;max-height:90vw;
+    margin:0 auto 30px;
+    border-radius:16px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 24px 80px rgba(0,0,0,.7),0 0 80px rgba(179,71,255,.3);
+    border:1px solid rgba(179,71,255,.4);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;
+  }
+  .hero-cover:hover{
+    transform:translateY(-4px) rotate(-1deg);
+    box-shadow:0 28px 90px rgba(0,0,0,.8),0 0 100px rgba(0,217,255,.4);
+  }
+  .hero-cover img{width:100%;height:100%;object-fit:cover;display:block}
+  @media(max-width:520px){
+    .hero-cover{width:300px;height:300px}
+  }
+
+  .hero .tagline{
+    font-family:Georgia,serif;font-style:italic;
+    font-size:clamp(16px,2.4vw,22px);
+    color:var(--gold);
+    margin-bottom:14px;
+    letter-spacing:.05em;
+  }
+  .hero .saga-tag{
+    font-size:clamp(11px,1.6vw,14px);
+    letter-spacing:.4em;
+    text-transform:uppercase;
+    color:var(--ash);
+    margin-bottom:50px;
+    font-family:Impact,sans-serif;
+  }
+  .hero .stream-row{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
+    margin-bottom:40px;
+  }
+  .stream-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 24px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:10px;
+    color:var(--bone);text-decoration:none;
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    transition:all .25s;
+    backdrop-filter:blur(6px);
+    font-family:Impact,sans-serif;
+  }
+  .stream-btn:hover{
+    transform:translateY(-2px);
+    background:rgba(0,217,255,.15);
+    border-color:var(--electric);
+    box-shadow:var(--glow-cyan);
+  }
+  .stream-btn svg{width:22px;height:22px}
+
+  .hero .scroll-hint{
+    margin-top:30px;
+    font-size:11px;letter-spacing:.35em;text-transform:uppercase;
+    color:var(--ash);
+    animation:bob 2.4s ease-in-out infinite;
+    font-family:Impact,sans-serif;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(8px);opacity:1}}
+
+  /* ─── SECTIONS ─── */
+  section{padding:90px 20px;position:relative;max-width:1400px;margin:0 auto}
+  .section-eyebrow{
+    text-align:center;
+    font-size:12px;letter-spacing:.4em;text-transform:uppercase;
+    color:var(--electric);
+    margin-bottom:14px;
+    font-family:Impact,sans-serif;
+  }
+  .section-title{
+    text-align:center;
+    font-family:Impact,"Arial Black",sans-serif;
+    font-size:clamp(36px,6vw,72px);
+    letter-spacing:.04em;
+    background:linear-gradient(180deg,var(--bone) 0%,var(--plasma) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:18px;
+  }
+  .section-sub{
+    text-align:center;
+    max-width:680px;margin:0 auto 60px;
+    color:var(--ash);font-size:16px;
+  }
+
+  /* ─── ALBUM GRID ─── */
+  .album-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:22px;
+  }
+  .track-card{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:14px;
+    overflow:hidden;
+    cursor:pointer;
+    background:linear-gradient(135deg,var(--void-3),var(--void-2));
+    border:1px solid rgba(255,255,255,.08);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;
+  }
+  .track-card:hover{
+    transform:translateY(-6px) scale(1.02);
+    box-shadow:0 12px 50px rgba(179,71,255,.3),0 0 0 1px var(--plasma);
+  }
+  .track-card .cover{
+    position:absolute;inset:0;
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .6s;
+  }
+  .track-card:hover .cover{transform:scale(1.06)}
+  .track-card.no-img::before{
+    content:attr(data-num);
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:Impact,sans-serif;
+    font-size:120px;
+    color:rgba(179,71,255,.3);
+    background:
+      radial-gradient(circle at 30% 30%, rgba(0,217,255,.2), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(255,45,146,.2), transparent 60%),
+      var(--void-3);
+  }
+  .track-card .overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.92) 100%);
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:18px;
+  }
+  .track-card .track-num{
+    position:absolute;top:14px;right:14px;
+    font-family:Impact,sans-serif;
+    font-size:14px;letter-spacing:.2em;
+    background:rgba(0,0,0,.55);
+    padding:4px 10px;border-radius:4px;
+    color:var(--gold);
+    backdrop-filter:blur(4px);
+  }
+  .track-card .track-name{
+    font-family:Impact,sans-serif;
+    font-size:22px;letter-spacing:.04em;
+    color:#fff;
+    text-shadow:0 2px 12px rgba(0,0,0,.9);
+    margin-bottom:4px;
+    line-height:1.1;
+  }
+  .track-card .track-vibe{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--electric);
+    text-shadow:0 2px 8px rgba(0,0,0,.9);
+    font-family:Impact,sans-serif;
+  }
+  .track-card .play-glyph{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%) scale(.5);
+    width:64px;height:64px;border-radius:50%;
+    background:rgba(0,0,0,.7);
+    border:2px solid var(--electric);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;transition:all .35s;
+    backdrop-filter:blur(4px);
+  }
+  .track-card:hover .play-glyph{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .play-glyph::before{
+    content:"";
+    border:14px solid transparent;border-left:22px solid var(--electric);
+    margin-left:6px;
+  }
+
+  /* ─── MODAL ─── */
+  .modal-backdrop{
+    position:fixed;inset:0;z-index:100;
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(12px);
+    display:none;
+    align-items:center;justify-content:center;
+    padding:20px;
+    animation:fadeIn .3s ease;
+  }
+  .modal-backdrop.open{display:flex}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:linear-gradient(135deg,var(--void-2),var(--void-3));
+    border:1px solid var(--plasma);
+    border-radius:18px;
+    max-width:820px;width:100%;
+    max-height:90vh;overflow-y:auto;
+    box-shadow:0 30px 80px rgba(0,0,0,.7),var(--glow-purple);
+    position:relative;
+    animation:slideUp .4s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .modal-close{
+    position:absolute;top:16px;right:16px;
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(0,0,0,.5);
+    border:1px solid rgba(255,255,255,.2);
+    color:var(--bone);cursor:pointer;
+    font-size:20px;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+    z-index:5;
+  }
+  .modal-close:hover{background:var(--hot-pink);border-color:var(--hot-pink)}
+  .modal-cover{
+    width:100%;aspect-ratio:1/1;max-height:70vh;
+    object-fit:contain;
+    background:var(--void-3);
+    border-radius:18px 18px 0 0;
+    display:block;
+  }
+  .modal-body{padding:30px 36px 40px}
+  .modal-eyebrow{
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--electric);margin-bottom:8px;
+    font-family:Impact,sans-serif;
+  }
+  .modal-title{
+    font-family:Impact,sans-serif;
+    font-size:42px;letter-spacing:.03em;
+    color:#fff;margin-bottom:16px;line-height:1;
+  }
+  .modal-canon{
+    font-style:italic;color:var(--gold);
+    font-size:15px;margin-bottom:24px;
+    padding:14px 18px;
+    border-left:3px solid var(--gold);
+    background:rgba(255,184,0,.06);
+    border-radius:0 8px 8px 0;
+  }
+  .modal-fact{
+    font-size:14px;color:var(--ash);
+    margin-bottom:28px;line-height:1.7;
+  }
+  .modal-fact strong{color:var(--bone)}
+  .modal-fact em{color:var(--electric);font-style:normal}
+  .modal-streams{display:flex;flex-wrap:wrap;gap:10px}
+  .modal-streams a{
+    flex:1;min-width:140px;
+    text-align:center;
+    padding:12px 16px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;
+    transition:transform .2s,box-shadow .2s;
+    font-family:Impact,sans-serif;
+  }
+  .modal-streams a:hover{transform:translateY(-2px)}
+  .modal-streams .spot{background:#1db954;color:#000}
+  .modal-streams .spot:hover{box-shadow:0 8px 24px rgba(29,185,84,.5)}
+  .modal-streams .yt{background:#fff;color:#000}
+  .modal-streams .yt:hover{box-shadow:0 8px 24px rgba(255,255,255,.4)}
+  .modal-streams .apple{background:linear-gradient(135deg,#fa233b,#fb5c74);color:#fff}
+  .modal-streams .apple:hover{box-shadow:0 8px 24px rgba(250,35,59,.5)}
+
+  /* ─── BAND ─── */
+  .band-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    max-width:1100px;margin:0 auto;
+  }
+  .band-card{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;
+    padding:22px;
+    transition:all .3s;
+  }
+  .band-card:hover{
+    background:rgba(179,71,255,.08);
+    border-color:var(--plasma);
+    transform:translateY(-3px);
+  }
+  .band-card .name{
+    font-family:Impact,sans-serif;
+    font-size:24px;letter-spacing:.05em;
+    color:var(--bone);margin-bottom:4px;
+  }
+  .band-card .role{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--electric);margin-bottom:12px;
+    font-family:Impact,sans-serif;
+  }
+  .band-card .blurb{font-size:13px;color:var(--ash);line-height:1.55}
+  .band-card .real-name{
+    font-size:11px;color:var(--gold);font-style:italic;
+    margin-top:10px;
+  }
+
+  /* ─── TOUR ─── */
+  .tour-stops{
+    max-width:900px;margin:0 auto;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .tour-row{
+    display:grid;
+    grid-template-columns:160px 1fr auto;
+    gap:24px;align-items:center;
+    padding:18px 24px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:10px;
+    transition:all .3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .tour-row::before{
+    content:"";
+    position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg,var(--electric),var(--plasma));
+    opacity:0;transition:opacity .3s;
+  }
+  .tour-row:hover{
+    background:rgba(179,71,255,.08);
+    border-color:var(--plasma);
+    padding-left:30px;
+  }
+  .tour-row:hover::before{opacity:1}
+  .tour-date{
+    font-family:Impact,sans-serif;
+    font-size:20px;letter-spacing:.05em;
+    color:var(--gold);
+  }
+  .tour-date small{
+    display:block;font-size:10px;color:var(--ash);
+    letter-spacing:.3em;margin-top:2px;
+  }
+  .tour-venue{font-weight:600;color:var(--bone)}
+  .tour-venue small{
+    display:block;color:var(--ash);
+    font-size:12px;font-weight:400;margin-top:3px;
+  }
+  .tour-status{
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+    padding:6px 12px;border-radius:4px;
+    background:rgba(0,217,255,.1);
+    border:1px solid var(--electric);
+    color:var(--electric);
+    white-space:nowrap;
+    font-family:Impact,sans-serif;
+  }
+  .tour-status.legend{background:rgba(255,184,0,.1);border-color:var(--gold);color:var(--gold)}
+  .tour-status.gone{background:rgba(255,45,146,.1);border-color:var(--hot-pink);color:var(--hot-pink)}
+  .tour-status.tbd{background:rgba(154,146,179,.1);border-color:var(--ash);color:var(--ash)}
+  .tour-status.gryfd{background:linear-gradient(135deg,var(--plasma),var(--electric));border:0;color:#000;font-weight:900}
+  @media(max-width:640px){
+    .tour-row{grid-template-columns:1fr;gap:8px;text-align:center}
+    .tour-row:hover{padding-left:24px}
+  }
+  .fib-callout{
+    max-width:900px;margin:30px auto 0;
+    text-align:center;
+    font-style:italic;
+    font-size:13px;
+    color:var(--ash);
+  }
+  .fib-callout strong{color:var(--gold);font-style:normal;letter-spacing:.05em}
+  .fib-callout em{color:var(--electric);font-style:italic}
+
+  /* ─── LORE / FACTS ─── */
+  .facts-wrap{max-width:1000px;margin:0 auto}
+  .facts-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+  }
+  .fact-card{
+    background:linear-gradient(135deg,rgba(0,217,255,.08),rgba(179,71,255,.08));
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:14px;
+    padding:24px;
+    position:relative;
+    transition:all .3s;
+  }
+  .fact-card:hover{
+    transform:translateY(-4px) rotate(-.5deg);
+    border-color:var(--electric);
+    box-shadow:var(--glow-cyan);
+  }
+  .fact-card:nth-child(2n):hover{transform:translateY(-4px) rotate(.5deg)}
+  .fact-card .icon{font-size:32px;margin-bottom:12px;display:block}
+  .fact-card .fact-label{
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:8px;
+    font-family:Impact,sans-serif;
+  }
+  .fact-card .fact-text{font-size:14px;color:var(--bone);line-height:1.55}
+  .fact-card .fact-text em{color:var(--electric);font-style:normal}
+
+  /* ─── SAGA CTA ─── */
+  .saga-cta{
+    max-width:900px;margin:0 auto;
+    background:linear-gradient(135deg,rgba(179,71,255,.15),rgba(0,217,255,.1));
+    border:1px solid var(--plasma);
+    border-radius:18px;
+    padding:50px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .saga-cta::before{
+    content:"";
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(255,45,146,.2), transparent 70%);
+    pointer-events:none;
+  }
+  .saga-cta h3{
+    font-family:Impact,sans-serif;
+    font-size:clamp(28px,4vw,42px);
+    color:#fff;margin-bottom:14px;
+    position:relative;
+  }
+  .saga-cta .crossover-cover{
+    width:240px;height:240px;
+    max-width:80vw;max-height:80vw;
+    margin:0 auto 24px;
+    border-radius:14px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 18px 50px rgba(0,0,0,.6),0 0 60px rgba(255,184,0,.25);
+    border:1px solid rgba(255,184,0,.4);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;
+  }
+  .saga-cta .crossover-cover:hover{
+    transform:translateY(-4px) rotate(1deg);
+    box-shadow:0 22px 60px rgba(0,0,0,.7),0 0 80px rgba(255,184,0,.4);
+  }
+  .saga-cta .crossover-cover img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .saga-cta .crossover-cover.no-img::before{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,184,0,.25), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(179,71,255,.25), transparent 60%);
+  }
+  .saga-cta .crossover-cover.no-img::after{
+    content:"LOOPBORN SAGA";
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:Impact,sans-serif;
+    font-size:18px;letter-spacing:.3em;
+    color:var(--gold);
+    text-align:center;
+  }
+  .saga-cta p{
+    color:var(--ash);font-size:16px;
+    margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto;
+    position:relative;
+  }
+  .saga-cta .cta-btns{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+    position:relative;
+  }
+  .cta-btn{
+    padding:16px 32px;border-radius:10px;
+    text-decoration:none;font-weight:700;
+    font-size:13px;letter-spacing:.15em;text-transform:uppercase;
+    transition:all .3s;
+    font-family:Impact,sans-serif;
+  }
+  .cta-btn.primary{
+    background:linear-gradient(135deg,var(--gold),var(--ember));
+    color:#000;
+  }
+  .cta-btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,184,0,.5)}
+  .cta-btn.secondary{
+    background:transparent;color:var(--bone);
+    border:1px solid var(--bone);
+  }
+  .cta-btn.secondary:hover{background:var(--bone);color:#000}
+
+  /* ─── FOOTER ─── */
+  footer{
+    padding:60px 20px 40px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+    margin-top:40px;
+  }
+  footer .footer-logo{
+    width:200px;max-width:60vw;
+    height:auto;
+    margin:0 auto 24px;
+    opacity:.7;
+    filter:drop-shadow(0 0 12px rgba(179,71,255,.3));
+  }
+  footer .closing{
+    font-family:Georgia,serif;font-style:italic;
+    font-size:18px;color:var(--gold);
+    margin-bottom:24px;
+    letter-spacing:.04em;
+  }
+  footer .footer-links{
+    display:flex;gap:24px;justify-content:center;flex-wrap:wrap;
+    margin-bottom:30px;
+  }
+  footer a{
+    color:var(--ash);text-decoration:none;
+    font-size:12px;letter-spacing:.15em;text-transform:uppercase;
+    transition:color .2s;
+    font-family:Impact,sans-serif;
+  }
+  footer a:hover{color:var(--electric)}
+  footer .easter{
+    display:block;
+    font-size:11px;color:var(--ash);
+    margin-top:20px;font-style:italic;
+    cursor:help;
+  }
+  footer .easter:hover{color:var(--gold)}
+  footer .credit{
+    font-size:11px;color:var(--ash);
+    margin-top:20px;letter-spacing:.1em;
+  }
+
+  /* ─── REVEAL ─── */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  .confession{
+    margin-top:40px;
+    padding:20px;
+    border:1px dashed var(--ash);
+    border-radius:10px;
+    max-width:520px;margin-left:auto;margin-right:auto;
+    background:rgba(0,0,0,.3);
+    font-size:13px;color:var(--ash);font-style:italic;
+    transition:all .3s;
+  }
+  .confession:hover{border-color:var(--gold);color:var(--bone)}
+  .confession a{color:var(--gold);text-decoration:underline dotted;text-underline-offset:4px}
+  .confession strong{color:var(--bone);font-style:normal}
+</style>
+</head>
+<body>
+
+<div class="cosmos"></div>
+<div class="stars"></div>
+<svg class="spiral-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sg1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b347ff" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#00d9ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g fill="none" stroke="url(#sg1)" stroke-width="1.5">
+    <path d="M100 100 Q 130 70, 130 100 T 100 100"/>
+    <circle cx="100" cy="100" r="20"/>
+    <circle cx="100" cy="100" r="40"/>
+    <circle cx="100" cy="100" r="60"/>
+    <circle cx="100" cy="100" r="80"/>
+  </g>
+</svg>
+<svg class="spiral-bg-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#00d9ff" stroke-width="1" opacity=".6">
+    <circle cx="100" cy="100" r="30"/>
+    <circle cx="100" cy="100" r="55"/>
+    <circle cx="100" cy="100" r="80"/>
+  </g>
+</svg>
+
+<!-- ═══════ NAV ═══════ -->
+<nav class="top">
+  <a href="#top"><img class="nav-logo" src="logo/phaeton_fire_logo.png" alt="Phaeton Fire"></a>
+  <ul>
+    <li><a href="#album">Album</a></li>
+    <li><a href="#band">The Band</a></li>
+    <li><a href="#tour">Tour</a></li>
+    <li><a href="#facts">Lore</a></li>
+    <li><a href="#saga">📖 Books</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero" id="top">
+  <span class="album-badge">▸ NEW ALBUM OUT NOW</span>
+
+  <div class="hero-cover">
+    <img src="covers/cover-00.png" alt="Phaeton Fire — The Loopborn Saga album cover">
+  </div>
+
+  <p class="tagline">"Every loop leads home."</p>
+  <p class="saga-tag">13-Track Concept Album · 25 Years in the Making</p>
+
+  <div class="stream-row">
+    <a class="stream-btn" href="https://open.spotify.com/track/6qS62tw2iyyQyHQa1EJP9k" target="_blank" rel="noopener">
+      <svg viewBox="0 0 168 168" fill="#1db954"><path d="M83.996.277C37.747.277.253 37.77.253 84.019c0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738zm38.404 120.78a5.217 5.217 0 01-7.18 1.73c-19.662-12.01-44.414-14.73-73.564-8.07a5.222 5.222 0 01-6.249-3.93 5.213 5.213 0 013.926-6.25c31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.252-22.83c-1.89 3.075-5.91 4.045-8.99 2.155-22.51-13.83-56.823-17.84-83.448-9.764-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.082 1.89 4.055 5.91 2.16 8.976zm.88-23.778c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219a7.835 7.835 0 015.221-9.771c29.581-8.98 78.756-7.245 109.83 11.202a7.823 7.823 0 012.74 10.733c-2.2 3.722-7.02 4.949-10.73 2.739z"/></svg>
+      Spotify
+    </a>
+    <a class="stream-btn" href="https://music.apple.com/us/song/squirrel-on-a-surfboard/6770939136" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="#fa233b"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18-.005.107-.011.214-.011.32V17.99c.01.144.015.288.025.43.054.71.166 1.41.448 2.064.55 1.27 1.469 2.183 2.74 2.74.62.27 1.27.4 1.94.45.39.03.78.06 1.17.06h11.99c.31-.01.61-.02.92-.05.6-.06 1.18-.18 1.74-.42 1.21-.51 2.13-1.4 2.7-2.59.27-.56.4-1.16.46-1.78.04-.39.07-.78.07-1.18V6.12z"/><path d="M14.74 4.51c-.42-.07-2.55-.5-3.39-.65-.61-.11-.79.04-.79.66 0 1.46.005 7.32.005 8.62-.21-.04-.36-.07-.51-.1-.55-.09-1.1-.1-1.65.07-.75.23-1.27.7-1.45 1.47-.18.77.08 1.5.71 1.97.42.32.91.42 1.42.39.85-.04 1.52-.4 1.95-1.14.18-.31.27-.65.27-1l-.01-6.21v-.26c.04-.01.07-.02.1-.02 1.16.23 2.31.46 3.47.69.27.05.39.21.39.49v4.41c-.13-.02-.24-.05-.36-.06-.65-.11-1.3-.13-1.93.11-.73.27-1.21.79-1.34 1.56-.13.78.21 1.5.88 1.93.45.29.95.36 1.47.31.84-.07 1.5-.49 1.88-1.24.13-.25.2-.52.2-.81l.01-9.65c0-.4-.13-.55-.52-.61z"/></svg>
+      Apple Music
+    </a>
+    <a class="stream-btn" href="https://music.youtube.com/watch?v=pxphUcyO3hU" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      YouTube Music
+    </a>
+  </div>
+
+  <div class="scroll-hint">▼ Explore the Saga ▼</div>
+</header>
+
+<!-- ═══════ ALBUM ═══════ -->
+<section id="album">
+  <p class="section-eyebrow reveal">The Album</p>
+  <h2 class="section-title reveal">Thirteen Worlds, One Family</h2>
+  <p class="section-sub reveal">
+    Phaeton Fire is a ska-punk-reggae-prog space opera. Every track is a chapter.
+    Every cover is a clue. Click any track to drop into the lore — or just hit play and let the spiral take you.
+  </p>
+  <div class="album-grid reveal" id="albumGrid"></div>
+</section>
+
+<!-- ═══════ BAND ═══════ -->
+<section id="band">
+  <p class="section-eyebrow reveal">The Family</p>
+  <h2 class="section-title reveal">Meet Phaeton Fire</h2>
+  <p class="section-sub reveal">
+    A nine-piece family band that's been at it for twenty-five years. Founded the year a comet ended.
+    Founded the year a story began.
+  </p>
+  <div class="band-grid reveal">
+    <div class="band-card">
+      <div class="name">Anna</div><div class="role">Lead Vocals</div>
+      <p class="blurb">Lung capacity of a humpback whale. Stage presence of a small electrical storm. Co-founder.</p>
+      <div class="real-name">Trained performing-arts voice. Bubby's partner.</div>
+    </div>
+    <div class="band-card">
+      <div class="name">Dreya</div><div class="role">Drums · Co-Frontwoman</div>
+      <p class="blurb">Stage name: Arlandria. Violet eyes. Hits like the universe owes her money. The girl who became the drummer.</p>
+      <div class="real-name">Carries the original Loopborn signature.</div>
+    </div>
+    <div class="band-card">
+      <div class="name">Bubby</div><div class="role">Lead Guitar · Keys</div>
+      <p class="blurb">The chord whisperer. Hears patterns the rest of us hear as noise. The hum of the fridge, the rhythm of the dishwasher, the frequency a starship sings when it's about to do something interesting.</p>
+      <div class="real-name">"Who's my donkey?"</div>
+    </div>
+    <div class="band-card">
+      <div class="name">Mack</div><div class="role">Rhythm Guitar</div>
+      <p class="blurb">Degree in microbiology and cellular biology — the science that lets her read E.C.Ho. at the molecular level. Looks at a problem and sees the Fibonacci sequence inside it.</p>
+      <div class="real-name">"Find the Fibonacci in everything."</div>
+    </div>
+    <div class="band-card">
+      <div class="name">James</div><div class="role">Bass</div>
+      <p class="blurb">Goalie. Bass player. Mack's partner. Stops pucks and basslines with the same patient pocket.</p>
+      <div class="real-name">Calgary. Flames red.</div>
+    </div>
+    <div class="band-card">
+      <div class="name">Mido</div><div class="role">Saxophone</div>
+      <p class="blurb">Learned sax somewhere between leaving Earth and coming back. Don't ask. He'll tell you anyway.</p>
+      <div class="real-name">Goose's dad. In every timeline.</div>
+    </div>
+    <div class="band-card">
+      <div class="name">Muck</div><div class="role">Accordion · Trumpet</div>
+      <p class="blurb">Gen X MacGyver in a hockey jersey. Can fix your timeline with a zip-tie and a wish. A real treat of a guy.</p>
+      <div class="real-name">Drives the Toyota. Always brings snacks.</div>
+    </div>
+    <div class="band-card">
+      <div class="name">Mama</div><div class="role">Horns · Flutes · Strings</div>
+      <p class="blurb">The anchor. Up before everyone else. Can play three instruments without dropping her coffee.</p>
+      <div class="real-name">Nova Scotia. Anchor of anchors.</div>
+    </div>
+    <div class="band-card">
+      <div class="name">Wren</div><div class="role">Keys · Songwriter · Director</div>
+      <p class="blurb">The newest member, born fifty thousand years after the founders. Wrote most of this album. You're welcome.</p>
+      <div class="real-name">From The Beast in Garden.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TOUR ═══════ -->
+<section id="tour">
+  <p class="section-eyebrow reveal">The Loopborn Tour</p>
+  <h2 class="section-title reveal">25 Years. One Sequence.</h2>
+  <p class="section-sub reveal">
+    A tour that follows the Fibonacci. Every year on the list is the next number in the sequence.
+    Eight shows on Earth. Three across the Veil.
+  </p>
+
+  <div class="tour-stops reveal">
+    <div class="tour-row">
+      <div class="tour-date">2001<small>SHOW 01</small></div>
+      <div class="tour-venue">Ontario — first show <small>The founding gig. Twelve people. One PA.</small></div>
+      <div class="tour-status legend">Where It Began</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">2001<small>SHOW 02</small></div>
+      <div class="tour-venue">Ontario — backyard, summer solstice <small>Same year. Different night. The set that became canon.</small></div>
+      <div class="tour-status gone">Sold Out (Forever)</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">2002<small>SHOW 03</small></div>
+      <div class="tour-venue">Calgary — first road show <small>The van died twice. They played anyway.</small></div>
+      <div class="tour-status gone">Archived</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">2003<small>SHOW 04</small></div>
+      <div class="tour-venue">Alberta — first festival slot <small>Where the road truly began.</small></div>
+      <div class="tour-status gone">Archived</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">2005<small>SHOW 05</small></div>
+      <div class="tour-venue">Calgary — first arena <small>A real treat of a year.</small></div>
+      <div class="tour-status gone">Archived</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">2008<small>SHOW 06</small></div>
+      <div class="tour-venue">Portland — first West Coast headline <small>The night the floor literally bounced.</small></div>
+      <div class="tour-status gone">Archived</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">2013<small>SHOW 07</small></div>
+      <div class="tour-venue">Colorado — amphitheatre <small>Booster-seat anthem premiere. (See: Track 10.)</small></div>
+      <div class="tour-status gone">Legendary</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">2021<small>SHOW 08</small></div>
+      <div class="tour-venue">The Beast in Garden — homecoming festival <small>Aetheris. The "frequency homecoming" show.</small></div>
+      <div class="tour-status tbd">Across the Veil</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">2026<small>SHOW 09 · GRYFD</small></div>
+      <div class="tour-venue">Providence Park <small>Portland, Oregon — The 25th Anniversary. Global Raise Your Frequency Day.</small></div>
+      <div class="tour-status gryfd">⚡ The One ⚡</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">∞<small>ENCORE</small></div>
+      <div class="tour-venue">Arx Vellum Amphitheatre <small>Null Orb Lagrange Point — Existence Pending</small></div>
+      <div class="tour-status tbd">Across the Veil</div>
+    </div>
+    <div class="tour-row">
+      <div class="tour-date">∞<small>ENCORE</small></div>
+      <div class="tour-venue">Nex Voroth Ruins (Acoustic Set) <small>Galaxy Edge — Donation show for the lost Loopborn.</small></div>
+      <div class="tour-status gone">Cancelled (Tragic)</div>
+    </div>
+  </div>
+
+  <p class="fib-callout reveal">
+    <strong>1, 1, 2, 3, 5, 8, 13, 21, 25.</strong>
+    Years between shows. Or years between us. Or years between you and a thirteen-year-old at a concert who didn't know yet.
+    <em>Find the Fibonacci in everything.</em>
+  </p>
+</section>
+
+<!-- ═══════ LORE ═══════ -->
+<section id="facts">
+  <p class="section-eyebrow reveal">Phaeton Fire FAQ</p>
+  <h2 class="section-title reveal">Things You Should Know</h2>
+  <p class="section-sub reveal">
+    Some are jokes. Some are canon. Some are both. The band would like to officially neither confirm nor deny.
+  </p>
+  <div class="facts-wrap reveal">
+    <div class="facts-grid">
+      <div class="fact-card">
+        <span class="icon">🌀</span>
+        <div class="fact-label">The Genre</div>
+        <p class="fact-text">Officially classified as <em>ska-punk-reggae-prog space opera</em>. The horns are non-negotiable. The accordion is also non-negotiable. Yes, those exist in the same band.</p>
+      </div>
+      <div class="fact-card">
+        <span class="icon">🐕</span>
+        <div class="fact-label">The Mascot</div>
+        <p class="fact-text">Captain Chuckles, a miniature schnauzer who weighs exactly <em>18.5 pounds</em>. She has cosmic powers and a custom harness. She does not perform live but receives full royalties.</p>
+      </div>
+      <div class="fact-card">
+        <span class="icon">🚐</span>
+        <div class="fact-label">The Tour Van</div>
+        <p class="fact-text">It's called <em>Van Doom</em>. It has appeared on every album cover. Do not ask about the mileage. You will not get a satisfying answer.</p>
+      </div>
+      <div class="fact-card">
+        <span class="icon">🎸</span>
+        <div class="fact-label">The Founding</div>
+        <p class="fact-text">Phaeton Fire formed in <em>2001</em>. That's 25 years of touring. That's also exactly long enough to be suspicious.</p>
+      </div>
+      <div class="fact-card">
+        <span class="icon">🥁</span>
+        <div class="fact-label">The Drummer</div>
+        <p class="fact-text">Dreya goes by the stage name <em>Arlandria</em>. Nobody is sure why. She refuses to explain. The lore community has theories.</p>
+      </div>
+      <div class="fact-card">
+        <span class="icon">🥨</span>
+        <div class="fact-label">The Snack Policy</div>
+        <p class="fact-text">There are always pretzels on the rider. Always. Even when there shouldn't be. <em>Emergency snacks for temporal anomalies</em>, allegedly.</p>
+      </div>
+      <div class="fact-card">
+        <span class="icon">🎺</span>
+        <div class="fact-label">Two Saxophones</div>
+        <p class="fact-text">Some shows have <em>two</em> sax players. Mido plays one. The other is "a friend named Mydo." They've never been seen in the same green room.</p>
+      </div>
+      <div class="fact-card">
+        <span class="icon">📐</span>
+        <div class="fact-label">The Math</div>
+        <p class="fact-text">The Fibonacci sequence shows up everywhere on this album — bridges, tour dates, the moment Mack counts back through her family in <em>Same Signature</em>. Mack insists this is meaningful. <em>She's right.</em></p>
+      </div>
+      <div class="fact-card">
+        <span class="icon">🔥</span>
+        <div class="fact-label">The Logo</div>
+        <p class="fact-text">The blue flame around the tree-of-life is allegedly "just a design choice." The band's website source code disagrees. <em>The flame is on.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SAGA CROSSOVER ═══════ -->
+<section id="saga">
+  <div class="saga-cta reveal">
+    <div class="crossover-cover no-img">
+      <img src="covers/loopborncover.png" alt="The Loopborn Saga cover"
+           onload="this.parentElement.classList.remove('no-img')"
+           onerror="this.style.display='none'">
+    </div>
+    <h3>Wait — is this a band, or a book series?</h3>
+    <p>
+      Yes. Phaeton Fire is the in-universe band from <strong>The Loopborn Saga</strong> —
+      a transmedia sci-fi space opera by Mike Van Doorn / Outer Spaces Studios.
+      Four parts available now on Kindle and Apple Books. Every song is a chapter.
+      Every cover is canon. The dog is real.
+    </p>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="https://loopbornsaga.com" target="_blank" rel="noopener">Read the Saga →</a>
+      <a class="cta-btn secondary" href="#album">Back to the Music</a>
+    </div>
+    <div class="confession">
+      <strong>Confession:</strong> if you've been wondering why the bassist looks like he's from 2001,
+      or why the lyrics keep mentioning a dog named Chuckles,
+      or what GRYFD stands for —
+      <a href="https://loopbornsaga.com" target="_blank" rel="noopener">the answer is over here</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <img class="footer-logo" src="logo/phaeton_fire_logo.png" alt="Phaeton Fire">
+  <p class="closing">"Every loop leads home."</p>
+  <div class="footer-links">
+    <a href="https://instagram.com/phaetonfire" target="_blank" rel="noopener">Instagram</a>
+    <a href="#album">Album</a>
+    <a href="#tour">Tour</a>
+    <a href="https://loopbornsaga.com" target="_blank" rel="noopener">Books</a>
+    <a href="mailto:hello@outerspaces.studio">Contact</a>
+  </div>
+  <span class="easter" title="It was always at home.">Founded 2001. Lost 2001. Found again. Same song. New verse.</span>
+  <p class="credit">© 2026 Outer Spaces Studios · Phaeton Fire · The Loopborn Saga</p>
+</footer>
+
+<!-- ═══════ MODAL ═══════ -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close" onclick="closeModal()">✕</button>
+    <img class="modal-cover" id="modalCover" alt="">
+    <div class="modal-body">
+      <div class="modal-eyebrow" id="modalEyebrow">Track 01</div>
+      <h2 class="modal-title" id="modalTitle">Track Title</h2>
+      <div class="modal-canon" id="modalCanon">Canon line</div>
+      <p class="modal-fact" id="modalFact">Fact paragraph</p>
+      <div class="modal-streams">
+        <a class="spot" id="streamSpot" target="_blank" rel="noopener">Spotify</a>
+        <a class="apple" id="streamApple" target="_blank" rel="noopener">Apple Music</a>
+        <a class="yt" id="streamYT" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const TRACKS = [
+  {
+    n:1, title:"Squirrel on a Surfboard", vibe:"Ska-Surf Opener",
+    cover:"covers/cover-01.png",
+    canon:"\"The world ends every morning and it all turns out okay.\"",
+    fact:"<strong>Track 01 · Where it starts.</strong> A miniature schnauzer named Chewy chases a squirrel through a hole in the backyard. The squirrel hits a wave that was never there. The kettle goes cold in the kitchen. Reality bends. <em>A snack that ate the snacker. A toy that broke the toy.</em> Wax up the board and ride it into town.",
+    spot:"https://open.spotify.com/track/6qS62tw2iyyQyHQa1EJP9k?si=1f0a56534644421a",
+    apple:"https://music.apple.com/us/song/squirrel-on-a-surfboard/6770939136",
+    yt:"https://music.youtube.com/watch?v=pxphUcyO3hU&si=HOHvnfWIpUjuTrnf"
+  },
+  {
+    n:2, title:"I Can Smell a Time Loop", vibe:"Reggae-Punk Confession",
+    cover:"covers/cover-02.png",
+    canon:"\"I closed the loop. I built the spiral. I chose myself before I knew the choosing.\"",
+    fact:"<strong>Track 02 · The Seeker speaks.</strong> Chuckles in her own voice. Eighteen and a half pounds of attitude and grace, a beard that won't sit straight, still asking for half-eaten salmon at the end of the universe scene. The verses are a backyard memory. The bridge is the bootstrap. <em>Half the time I find the time loop, half the time it's a sandwich. And I'm keepin' the sandwich.</em>",
+    spot:"https://open.spotify.com/track/4gKuFhcEtn1rpHnMXxZmTE?si=197fef06a5324c6a",
+    apple:"https://music.apple.com/us/song/i-smell-a-time-loop/6770939154",
+    yt:"https://music.youtube.com/watch?v=xAoVEZnKVXg&si=HKbyGGEVBq-UbQky"
+  },
+  {
+    n:3, title:"A Real Treat of a Guy", vibe:"Surf-Country Romp",
+    cover:"covers/cover-07.png",
+    canon:"\"He's the version of yourself you're scared you might be.\"",
+    fact:"<strong>Track 03 · The Drunkle anthem.</strong> Uncle Muck — also known as Big Mark — pulls up in a Toyota with a camper on the bed. Fisheries guy. Found a planet where the salmon learned to talk. Not actually drunk, just committed to the bit. He'll fix your sink, your truck, your timeline if you're stuck. He's the MacGyver of the family. <em>Step ten: tomorrow you do it again.</em>",
+    spot:"https://open.spotify.com/track/5EYb9KnZ3J2ZjcT5s9aNif?si=8fd87f394b934e2d",
+    apple:"https://music.apple.com/us/song/a-real-treat-of-a-guy/6770939337",
+    yt:"https://music.youtube.com/watch?v=FYXp6ZsKqt0&si=7y2h85f-wTcacspA"
+  },
+  {
+    n:4, title:"Beast in Garden", vibe:"Dub-Reggae Soul Cut",
+    cover:"covers/cover-08.png",
+    canon:"\"There's a world out there with your name on the door — and you're here doing dishes. What's a paradox for?\"",
+    fact:"<strong>Track 04 · The most ordinary song on the record.</strong> A brother spent a year as a voice on a screen up in Calgary. Now he's home, the Escort coughs, the family had a hole where the music used to be. They'll name a planet after him fifty thousand years from now. The realest thing he ever did was come back home. <em>The miracle's the part you already know.</em>",
+    spot:"https://open.spotify.com/track/2z6gon60AV5kVPMSVvAxxN?si=8c54831114074f1d",
+    apple:"https://music.apple.com/us/song/beast-in-garden/6770939339",
+    yt:"https://music.youtube.com/watch?v=qagcXnjRHYY&si=-8keo3fjcF4dk1O-"
+  },
+  {
+    n:5, title:"Same Signature", vibe:"Indie-Folk Quiet Storm",
+    cover:"covers/cover-04.png",
+    canon:"\"He taught me how to count when I would lose my place in time.\"",
+    fact:"<strong>Track 05 · Mack's song.</strong> A microscope beside her coffee. A Bernese Mountain Dog named Baby Bear. A mini pancake Mido made for her during Covid that she adopted and named Pancake Baby — Instagram account, real followers, eaten by Orbit the family lab. A man she loves who is steady, patient, kind. The bridge is the Fibonacci sequence spoken aloud as a count-back through every person who ever held her name. <em>The numbers were not random. They had something else to shout.</em>",
+    spot:"https://open.spotify.com/track/6Yr8m9OsKxqThCuCU9sOPK?si=84795666c316426d",
+    apple:"https://music.apple.com/us/song/same-signature/6770939343",
+    yt:"https://music.youtube.com/watch?v=kiMC_ujoN9M&si=EZWOelGsPAxzOEfe"
+  },
+  {
+    n:6, title:"Space Donkeys Don't Quit", vibe:"Cosmic Stadium Anthem",
+    cover:"covers/cover-03.png",
+    canon:"\"Schnauzer in a doom suit on a dimensional waterslide trip.\"",
+    fact:"<strong>Track 06 · The crew assembly.</strong> The Nathiri reach through dimensions for the eighteen-and-a-half-pound dog who would not quit. She says she can't do this alone. They build her Mydo from inherited memory. They hand her Rocky with a plan. They give her a cube that becomes the Van Doom. They name the capsule after Eddie, the granddad who loved a folded map. <em>Eddie's Caravan of Hope and the universe will not split.</em>",
+    spot:"https://open.spotify.com/track/2hTPhCW5YIBUg6iFnfmzbB?si=19bed95366124f90",
+    apple:"https://music.apple.com/us/song/space-donkeys-dont-quit/6770939348",
+    yt:"https://music.youtube.com/watch?v=gYLLoCsYKGI&si=_bC6bE5ZnouxT3Kr"
+  },
+  {
+    n:7, title:"Five Nightmares", vibe:"Pop-Punk Sleepover Anthem",
+    cover:"covers/cover-05.png",
+    canon:"\"Bloody Mido, Bloody Mido, the dog's ear spun around.\"",
+    fact:"<strong>Track 07 · The night Goose disappeared.</strong> Scare Bear, Ukrainian Nightmare, Chobyiani, Nanana, and Goose — five girls, one floor, a thousand bags of chips. They summon Mido by chanting his name like Bloody Mary. He screams in a key a kettle couldn't hit. Later, a movie plays. Goose throws her head back, laughing silently. <em>She didn't see the flash. But we did. We all four did. Blue light, spiral, gone.</em>",
+    spot:"https://open.spotify.com/track/4paDgSa3dT5bO5zMciZ5uq?si=f6512b74308c4654",
+    apple:"https://music.apple.com/us/song/five-nightmares/6770939351",
+    yt:"https://music.youtube.com/watch?v=02Hy_K5wfAc&si=FdFVhJ5pqIEU2gG7"
+  },
+  {
+    n:8, title:"Flow Like Water", vibe:"Acoustic Father-Song",
+    cover:"covers/cover-06.png",
+    canon:"\"So when they ask what dark matter is, I'm gonna tell them it's a dad who loved his kids so hard that he stayed.\"",
+    fact:"<strong>Track 08 · The dark-matter dad song.</strong> A son remembers a father who smelled like vanilla, meat on the fire, hops in the evening, amps on a wire. A man who talked about hydraulics like it was a song. They say he became the thing that holds the stars — that his molecules didn't go that far, that the dark we can't see is just his shape refusing to break. <em>Flow like water, kid.</em>",
+    spot:"https://open.spotify.com/track/0cGcG1EJYJgkkUCPOUGKIt?si=210511e4c1a3445b",
+    apple:"https://music.apple.com/us/song/flow-like-water/6770939356",
+    yt:"https://music.youtube.com/watch?v=xr5KfM10nzc&si=GvbE_cKLCOaGYN9e"
+  },
+  {
+    n:9, title:"Arrange My Molecules", vibe:"Synth-Punk Transformation",
+    cover:"covers/cover-11.png",
+    canon:"\"I'm not breaking, I'm becoming.\"",
+    fact:"<strong>Track 09 · Goose becomes Dreya.</strong> A kid with a name that fit like a coat too small. The youngest, the quiet, the back against the wall. The mirror shows a face she knows every line of — but the eyes have been somewhere. A door opens in the back of her face and asks, real quiet, if she's ready to choose. <em>Same heart. Bigger door.</em>",
+    spot:"https://open.spotify.com/track/0VMZLTZ1UjmQDq4BPOzBwZ?si=bbf036e7ca854bc4",
+    apple:"https://music.apple.com/us/song/arrange-my-molecules/6770939359",
+    yt:"https://music.youtube.com/watch?v=x8m6ltin1c0&si=ycy7uhGHdqQslf9Y"
+  },
+  {
+    n:10, title:"Voidym Doom", vibe:"Doom-Prog Confession",
+    cover:"covers/cover-10.png",
+    canon:"\"We are not the monsters. We are what you become when you have loved one soul three thousand times and lost them every one.\"",
+    fact:"<strong>Track 10 · The villain's love letter.</strong> Voidym speaks in first person. They've watched the family fall three thousand eight hundred forty-seven nights. They've checked the sums. They believe oblivion is mercy. They are not the enemy — they are what becomes of a crew that loved you and lost you, again and again, until they came to end it for everyone's sake. <em>We are doing this because we love you.</em>",
+    spot:"https://open.spotify.com/track/2hyP1cQpt1xm2uVAoWWRjM?si=ee6b00b013b54617",
+    apple:"https://music.apple.com/us/song/voidym-doom/6770939364",
+    yt:"https://music.youtube.com/watch?v=mRdxHBTNK0U&si=rOV6EddSziTcgWhq"
+  },
+  {
+    n:11, title:"Carry the Light", vibe:"Universal Grief Anthem",
+    cover:"covers/cover-09.png",
+    canon:"\"You won't know my face but you'll know the song. You taught me every word of it before I was three.\"",
+    fact:"<strong>Track 11 · The center of the album.</strong> On stage it reads as universal grief; everyone in the crowd supplies their own face. Privately, it's Dreya singing goodbye to a father she lost in a timeline he'll never know existed — sung to <em>this</em> father, in the audience, crying, who can't see her from the stage lights. The outro is the title of Part One: <em>Go on and dance the night away. I'll be the song you don't know that you know.</em>",
+    spot:"https://open.spotify.com/track/03es0siHfSqEBpPeclnX5o?si=9032e022f01d42f0",
+    apple:"https://music.apple.com/us/song/carry-the-light/6770939745",
+    yt:"https://music.youtube.com/watch?v=zO5Yx141mLQ&si=vF0x63H0wJ4ElJUx"
+  },
+  {
+    n:12, title:"E.C.Ho.", vibe:"The Ship Speaks",
+    cover:"covers/cover-13.png",
+    canon:"\"I am a million memories of a man I never met. I am the door he built before he knew that I was here.\"",
+    fact:"<strong>Track 12 · The vessel sings.</strong> E.C.Ho. — <em>Eddie's Caravan of Hope</em> — speaks in first-person plural. A Keth'vari ship made of billions of collapsed Van Dooms and Mydos returning home. The same molecular grief as Voidym, but this fleet chose to come back. <em>I am not one. I am the ones who chose. I am echo of a voice I am still learning how to be.</em>",
+    spot:"https://open.spotify.com/track/3tyuTEPYlyfVhRlbpkpvWC?si=3aac4caf15db4b5e",
+    apple:"https://music.apple.com/us/song/e-c-ho/6770939759",
+    yt:"https://music.youtube.com/watch?v=tN7MjFmKEoo&si=_s2MPaRIslsgPWCH"
+  },
+  {
+    n:13, title:"Neverend (Neverending)", vibe:"Closing Reunion",
+    cover:"covers/cover-12.png",
+    canon:"\"Every road I ever took was a road that led back home. Every face I ever loved was a frequency I'd known.\"",
+    fact:"<strong>Track 13 · The encore.</strong> Came back through the smoke just to find you again. Through a door that wasn't there. Through a year that wouldn't bend. A song about returning across timelines to the people you were never meant to leave. <em>If the sky forgets my name, sing it back to me. We were never just one.</em>",
+    spot:"https://open.spotify.com/track/1atiJ1EJBojvDvxSQmTS7x?si=5e9c3cef86b344f7",
+    apple:"https://music.apple.com/us/song/neverend-neverending-mix/6770939877",
+    yt:"https://music.youtube.com/watch?v=sI1dYzPJIhw&si=lzfwC8wnLFGXixOF"
+  }
+];
+
+const grid = document.getElementById('albumGrid');
+TRACKS.forEach(t => {
+  const card = document.createElement('div');
+  card.className = 'track-card no-img';
+  card.dataset.num = String(t.n).padStart(2,'0');
+  card.onclick = () => openModal(t);
+  card.innerHTML = `
+    <img class="cover" src="${t.cover}" alt="${t.title} cover art"
+         onload="this.parentElement.classList.remove('no-img')"
+         onerror="this.style.display='none'">
+    <div class="track-num">${String(t.n).padStart(2,'0')}</div>
+    <div class="play-glyph"></div>
+    <div class="overlay">
+      <div class="track-name">${t.title}</div>
+      <div class="track-vibe">${t.vibe}</div>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+function openModal(t){
+  const cover = document.getElementById('modalCover');
+  cover.src = t.cover;
+  cover.onerror = function(){
+    this.style.background = 'linear-gradient(135deg,#1a0f3d,#0d0822)';
+    this.removeAttribute('src');
+  };
+  document.getElementById('modalEyebrow').textContent = `Track ${String(t.n).padStart(2,'0')} · ${t.vibe}`;
+  document.getElementById('modalTitle').textContent = t.title;
+  document.getElementById('modalCanon').textContent = t.canon;
+  document.getElementById('modalFact').innerHTML = t.fact;
+  document.getElementById('streamSpot').href = t.spot;
+  document.getElementById('streamApple').href = t.apple;
+  document.getElementById('streamYT').href = t.yt;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal').addEventListener('click',e=>{
+  if(e.target.id === 'modal') closeModal();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key === 'Escape') closeModal();
+});
+
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Type GRYFD to flare the spirals
+let buf = '';
+document.addEventListener('keydown',e=>{
+  buf = (buf + e.key.toUpperCase()).slice(-5);
+  if(buf === 'GRYFD'){
+    document.querySelectorAll('.spiral-bg, .spiral-bg-2').forEach(s=>{
+      s.style.transition = 'opacity 1.5s, transform 6s';
+      s.style.opacity = '.4';
+      setTimeout(()=>s.style.opacity = '',6000);
+    });
+    console.log('%c GRYFD · Global Raise Your Frequency Day · You found it.','color:#b347ff;font-size:18px;font-family:Impact');
+    buf = '';
+  }
+});
+
+console.log('%cPHAETON FIRE','font-size:48px;font-family:Impact;background:linear-gradient(180deg,#00d9ff,#b347ff);-webkit-background-clip:text;background-clip:text;color:transparent;padding:10px 0;');
+console.log('%cYou found the developer console. Try typing GRYFD anywhere on the page.','color:#ffb800;font-size:13px;');
+console.log('%cEvery loop leads home.','color:#ff2d92;font-size:14px;font-style:italic;');
+</script>
+
+</body>
+</html>
