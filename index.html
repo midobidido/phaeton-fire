@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PHAETON FIRE — The Loopborn Saga</title>
-<meta name="description" content="Phaeton Fire — a ska-punk-reggae-prog space opera family band. The official soundtrack to The Loopborn Saga by Mike Van Doorn / Outer Spaces Studios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Phaeton Fire — a ska-punk-reggae-prog space opera family band. The official soundtrack to The Loopborn Saga by Mike Van Doorn / Outer Spaces Studios.">
 
 <!-- ════════════════════════════════════════════════════════════
      PHAETON FIRE — Official Site  v2
@@ -28,25 +31,34 @@
     --hot-pink:#ff2d92;
     --gold:#ffb800;
     --ember:#ff5722;
-    --bone:#f4ecd8;
+    --bone:#fff5dc;
     --ash:#9a92b3;
     --glow-cyan:0 0 24px rgba(0,217,255,.45);
     --glow-purple:0 0 30px rgba(179,71,255,.5);
     /* Type stack:
        --font-display = the cinematic title face. Impact reads great at large sizes.
        --font-ui      = small UI text. Heavy sans-serif reads cleaner than Impact under 18px. */
-    --font-display:Impact,"Arial Black","Helvetica Neue",sans-serif;
-    --font-ui:"Helvetica Neue",-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+    --font-display:"Bricolage Grotesque", "Arial Black", sans-serif;
+    --font-ui:"Inter Tight", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   }
 
   body{
-    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-family:var(--font-ui);
     background:var(--void);
     color:var(--bone);
     overflow-x:hidden;
-    line-height:1.55;
+    line-height:1.65;
+    font-size:17px;
     min-height:100vh;
+      -webkit-font-smoothing:antialiased;
   }
+  /* Bricolage Grotesque optical sizing — bigger sizes get more characterful */
+  h1, h2, h3, .hero h1, .section-title, .track-title, .band-name, .role,
+  .real-name, .modal-title, .tour-date, .fact-label, .fib-callout strong {
+    font-variation-settings:"opsz" 96;
+    letter-spacing:-0.015em;
+  }
+
 
   /* ─── COSMIC BACKGROUND ─── */
   .cosmos{
@@ -567,7 +579,7 @@
     color:var(--gold);margin-bottom:8px;
     font-family:var(--font-ui);font-weight:700;
   }
-  .fact-card .fact-text{font-size:14px;color:var(--bone);line-height:1.55}
+  .fact-card .fact-text{font-size:15px;color:var(--bone);line-height:1.6}
   .fact-card .fact-text em{color:var(--electric);font-style:normal}
 
   /* ─── SAGA CTA ─── */
